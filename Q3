@@ -1,0 +1,18 @@
+#include <stdio.h>
+int main(){
+    unsigned char reg = 0;
+    int dev = 2; // AC
+    // ON
+    reg = reg | (1 << dev);
+    printf("%d\n", reg);
+    // OFF
+    reg = reg & ~(1 << dev);
+    printf("%d\n", reg);
+    // TOGGLE
+    reg = reg ^ (1 << dev);
+    printf("%d\n", reg);
+    // CHECK
+    if((reg >> dev) & 1) printf("ON\n");
+    else printf("OFF\n");
+    return 0;
+}
