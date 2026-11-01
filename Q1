@@ -1,0 +1,23 @@
+#include <stdio.h>
+
+int main() {
+    float price, qty;
+    int senior;
+    scanf("%f %f %d", &price, &qty, &senior);
+
+    float gross = price * qty;
+    float discount = senior ? gross * 15.0f / 100.0f : 0.0f;
+    float taxable = gross - discount;
+    float gst = taxable * 5.0f / 100.0f;
+    float total = taxable + gst;
+    float net = total > 1000 ? total - 50 : total;
+
+    printf("%.2f\n", total);
+    printf("%.2f\n", net);
+    
+    int count = 0;
+    count = count + 1; // Fixed UB: was count = count++ + 1
+    printf("%d\n", count);
+    
+    return 0;
+}
