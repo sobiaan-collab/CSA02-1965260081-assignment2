@@ -1,0 +1,17 @@
+#include <stdio.h>
+int main(){
+    float bal, rate, emi;
+    scanf("%f %f %f", &bal, &rate, &emi);
+    int month=0;
+    while(bal>0){
+        month++;
+        float interest = bal * rate / 100;
+        bal = bal + interest;
+        if(bal < emi) emi = bal;
+        bal = bal - emi;
+        printf("Month %d Balance %.2f\n", month, bal);
+        if(month>360) break; // safety
+    }
+    printf("Months %d", month);
+    return 0;
+}
