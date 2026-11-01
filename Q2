@@ -1,0 +1,18 @@
+#include <stdio.h>
+int call = 0;
+int checkCard(){
+    call++;
+    return 1;
+}
+int main(){
+    int age=65;
+    int result;
+    // && will not call second if first is false
+    result = (age < 60) && checkCard();
+    printf("Calls after && = %d\n", call);
+    call = 0;
+    // & will always call both
+    result = (age < 60) & checkCard();
+    printf("Calls after & = %d\n", call);
+    return 0;
+}
